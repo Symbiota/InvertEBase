@@ -176,8 +176,8 @@ if($action == 'batchAssignTag'){
 									<option value="">Select Tag</option>
 									<option value="">--------------</option>
 									<?php
-									foreach($tagArr as $k){
-										echo '<option value="'.$k.'" '.($tag==$k?'SELECTED ':'').'>'.$k.'</option>';
+									foreach($tagArr as $tagKey => $displayText){
+										echo '<option value="'.$tagKey.'" '.($tag==$tagKey?'SELECTED ':'').'>'.$displayText.'</option>';
 									}
 									?>
 								</select>
