@@ -345,10 +345,10 @@ class ImageLibrarySearch extends OccurrenceTaxaManager{
 
 	public function getTagArr(){
 		$retArr = array();
-		$sql = 'SELECT DISTINCT keyvalue FROM imagetag ORDER BY keyvalue ';
+		$sql = 'SELECT tagkey, CONCAT_WS(" - ",shortlabel,tagDescription) as displayText FROM imagetagkey ORDER BY tagkey';
 		if($rs = $this->conn->query($sql)){
 			while($r = $rs->fetch_object()){
-				$retArr[] = $r->keyvalue;
+				$retArr[$r->tagkey] = $r->displayText;
 			}
 		}
 		$rs->free();
