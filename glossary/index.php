@@ -89,7 +89,6 @@ $taxonName = ($tid?$taxaArr[$tid]:'');
 			f.searchtaxa.value = searchForm.searchtaxa.value;
 			f.searchterm.value = searchForm.searchterm.value;
 			if(searchForm.deepsearch.checked) f.deepsearch.value = 1;
-
 			var downloadtype = f.exporttype.value;
 			if(downloadtype == 'translation'){
 				var numTranslations = 0;
@@ -177,11 +176,6 @@ $taxonName = ($tid?$taxaArr[$tid]:'');
 					<?php
 				}
 				?>
-				<div>
-					<a href="#" title="Show download options" onclick="toggle('downloadoptionsdiv');return false;">
-						<?php echo (isset($LANG['DOWN_OP'])?$LANG['DOWN_OP']:'Download Options'); ?>
-					</a>
-				</div>
 			</div>
 			<div id="downloadoptionsdiv" style="display:none;clear:both;float:right;margin-top:15px;background-color:white;">
 				<form name="downloadform" action="glossdocexport.php" method="post" onsubmit="return verifyDownloadForm(this);">
