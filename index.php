@@ -56,7 +56,7 @@ header("Content-Type: text/html; charset=".$CHARSET);
 				$interval = 7000;
 				//Enter checklist id, if you wish for images to be pulled from a checklist, leave as 0 if you do not wish for images to come from a checklist
 				//If you would like to use more than one checklist, separate their ids with a comma ex. "1,2,3,4"
-				$clId = "4";
+				$clId = "92";
 				//Enter field, specimen, or both to specify whether to use only field or specimen images, or both
 				$imageType = "both";
 				//Enter number of days of most recent images that should be included 
