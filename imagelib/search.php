@@ -94,13 +94,6 @@ if($action == 'batchAssignTag'){
 	</script>
 	<script src="../js/symb/api.taxonomy.taxasuggest.js?ver=4" type="text/javascript"></script>
 	<script src="../js/symb/imagelib.search.js?ver=2" type="text/javascript"></script>
-	<style type="text/css">
-		fieldset{ padding: 15px }
-		fieldset legend{ font-weight:bold }
-		label{ font-weight:bold }
-		.row-div{ clear: both }
-		#action-status-div{ padding: 15px; }
-	</style>
 </head>
 <body>
 	<?php
