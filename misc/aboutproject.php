@@ -22,7 +22,6 @@ header("Content-Type: text/html; charset=".$CHARSET);
 		<!-- This is inner text! -->
 		<div id="innertext" style="margin:10px 20px">
 			<h1>History:</h1>
-
 			<p>InvertEBase originated in 2014 as part of a U. S. National Science Foundation (NSF) Thematic Collection Network (TCN) grant in the
 			<a href="https://www.idigbio.org/content/nsf-adbc-program-information" target="_blank">Advancing Digitization of Biodiversity Collections (ADBC)</a> Program.
 			It was initially created as a collaborative effort to digitize specimen
@@ -72,11 +71,9 @@ header("Content-Type: text/html; charset=".$CHARSET);
 			<p>(5) Collaborative Research: ARTS: Understanding Tropical Invertebrate Diversity Through Integrative Revisionary Systematics and Training:
 			<a href="https://www.nsf.gov/awardsearch/showAward?AWD_ID=1856504" target="_blank">DEB-1456674</a> to R. Collin (Smithsonian Tropical Research Institute);
 			with development and integration of the STRI Panama portal.
-
 		</div>
 		<?php
 		include($SERVER_ROOT.'/includes/footer.php');
 		?>
 	</body>
 </html>
-
