@@ -50,4 +50,5 @@ $LANG['PAGE'] = 'Página';
 $LANG['RECORDS'] = 'registros';
 $LANG['OF'] = 'de';
 $LANG['NO_IMAGES'] = 'No existen imágenes que coincidan con sus criterios de búsqueda. Por favor modifica tu búsqueda y vuelve a intentarlo';
+
 ?>

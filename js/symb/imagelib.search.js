@@ -21,6 +21,7 @@ function deactivateCollectionControl(){
 	$("#collection-div").hide();
 	$("input[name='db[]']").prop('checked', false);
 	$("input[name='cat[]']").prop('checked', false);
+
 }
 
 function openIndPU(occId,clid){
