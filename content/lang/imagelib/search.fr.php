@@ -50,4 +50,5 @@ $LANG['PAGE'] = 'Page';
 $LANG['RECORDS'] = 'enregistrements';
 $LANG['OF'] = 'de';
 $LANG['NO_IMAGES'] = "Aucune image correspondant à vos critères de recherche n'existe. Veuillez modifier votre recherche et réessayer";
+
 ?>
