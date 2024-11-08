@@ -1,26 +1,28 @@
 <?php
 include_once('../config/symbini.php');
 header("Content-Type: text/html; charset=".$CHARSET);
+include_once('content/lang/misc/aboutproject.'.$LANG_TAG.'.php');
 ?>
-<html>
-	<head>
-		<title>About Project</title>
-		<?php
-		$activateJQuery = false;
-		include_once($SERVER_ROOT.'/includes/head.php');
-		?>
-	</head>
-	<body>
-		<?php
-		$displayLeftMenu = false;
-		include($SERVER_ROOT.'/includes/header.php');
-		?>
-		<div class="navpath">
-			<a href="../index.php">Home</a> &gt;&gt;
-			<b>About the Project/History/Funding</b>
-		</div>
-		<!-- This is inner text! -->
-		<div id="innertext" style="margin:10px 20px">
+<!DOCTYPE html>
+<html lang="<?php echo $LANG_TAG ?>">
+        <head>
+                <title>About Project</title>
+                <?php
+
+                include_once($SERVER_ROOT.'/includes/head.php');
+                ?>
+        </head>
+        <body>
+                <?php
+                $displayLeftMenu = false;
+                include($SERVER_ROOT.'/includes/header.php');
+                ?>
+                <div class="navpath">
+                        <a href="../index.php">Home</a> >>
+                        <b>Project Information</b>
+                </div>
+                <!-- This is inner text! -->
+                <div role="main" id="innertext">
 			<h1>History:</h1>
 			<p>InvertEBase originated in 2014 as part of a U. S. National Science Foundation (NSF) Thematic Collection Network (TCN) grant in the
 			<a href="https://www.idigbio.org/content/nsf-adbc-program-information" target="_blank">Advancing Digitization of Biodiversity Collections (ADBC)</a> Program.
