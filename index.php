@@ -79,6 +79,25 @@ header('Content-Type: text/html; charset=' . $CHARSET);
 			echo $pluginManager->createSlideShow($ssId,$numSlides,$width,$numDays,$imageType,$clid,$dayInterval);
 			?>
 		</div>
+		<?php
+		if($LANG_TAG == 'es'){
+			?>
+			    <h1 style="margin-left:10px">Bienvenido a InvertEBase</h1>
+                <div style="padding:5px 20px;font-size:120%">
+                        <p>InvertEBase es un portal de datos de especímenes que respalda una red en crecimiento de colecciones de historia natural centradas en el estudio de animales invertebrados, 
+						con excepción de los artrópodos terrestres. Proporciona un mecanismo para que los miembros de la red administren, mejoren y compartan datos de biodiversidad e 
+						imágenes asociadas con científicos y el público en general. La mayoría de las instituciones asociadas actuales tienen su sede en América del Norte, pero el alcance geográfico, 
+						que refleja las colecciones combinadas, es global.</p>
+                </div>
+                <div style="padding:5px 20px; font-size:120%">
+                        <p>Para comentarios, preguntas o para unirse al portal, comuníquese con el <a href="mailto:help@symbiota.org?subject=InvertEBase Feedback">
+                        Symbiota Support Hub (help@symbiota.org)</a>.</p>
+                </div>
+		<?php
+			}
+			else{
+			//Default Language
+		?>
                 <h1 style="margin-left:10px">Welcome to InvertEBase</h1>
                 <div style="padding:5px 20px;font-size:120%">
                         <p>InvertEBase is a specimen data portal supporting a growing network of natural history collections focused on the study of invertebrate animals,
@@ -90,6 +109,9 @@ header('Content-Type: text/html; charset=' . $CHARSET);
                         <p>For comments, questions, or to join the portal, contact the <a href="mailto:help@symbiota.org?subject=InvertEBase Feedback">
                         Symbiota Support Hub (help@symbiota.org)</a>.</p>
                 </div>
+		<?php
+			}
+		?>
 	</main>
 	<?php
 	include($SERVER_ROOT . '/includes/footer.php');

@@ -9,6 +9,17 @@
  e.g. override: $LANG['H_COLLECTIONS'] = 'Search Lichen Collections';
 */
 
-
+$LANG['H_H2'] = 'Volviendo al pasado para ver el futuro';
+$LANG['H_PROJ_INFO'] = 'Información del Proyecto';
+$LANG['H_DYN_CHECKLISTS'] = 'Listas Dinámicas';
+$LANG['H_SEARCH_IMAGES'] = 'Buscar Imágenes';
+$LANG['H_INVENTORIES'] = 'Inventarios';
+$LANG['H_GEO_INVENTORIES'] = 'Inventarios Geográficos';
+$LANG['H_TAX_INVENTORIES'] = 'Inventarios Taxonómicos';
+$LANG['H_GLOSSARIES'] = 'Glosarios';
+$LANG['H_CONTRIBUTORS'] = 'Colaboradores';
+$LANG['H_SEARCH_GLOSSARY'] = 'Buscar Glosario';
+$LANG['H_ASSOC_PROJECTS'] = 'Proyectos Asociados';
+$LANG['H_STRI'] = 'Portal Marino de STRI';
 
 ?>

@@ -42,7 +42,7 @@ $collectionSearchPage = $SHOULD_USE_HARVESTPARAMS ? '/collections/index.php' : '
 				</a>
 				<div class="brand-name">
 					<h1 style="color:#02336A;">InvertEBase</h1>
-					<h2 style="color:#02336A;">Reaching back to see the future</h2>
+					<h2 style="color:#02336A;"><?= $LANG['H_H2'] ?></h2>
 				</div>
 			</div>
 		</div>
@@ -60,11 +60,11 @@ $collectionSearchPage = $SHOULD_USE_HARVESTPARAMS ? '/collections/index.php' : '
 					</li>
                                         <li>
                                                 <a href="<?= $CLIENT_ROOT . '/misc/aboutproject.php' ?>">
-                                                        Project Information
+                                                        <?= $LANG['H_PROJ_INFO'] ?>
                                                 </a>
                                         </li>
                                         <li>
-                                                <a href="#">Search</a>
+                                                <a href="#"><?= $LANG['H_SEARCH'] ?></a>
                                                 <ul>
                                               		<li>
 								<a href="<?= $CLIENT_ROOT . $collectionSearchPage ?>">
@@ -78,52 +78,52 @@ $collectionSearchPage = $SHOULD_USE_HARVESTPARAMS ? '/collections/index.php' : '
                                         		</li>
                                                         <li>
                                                                 <a href="<?= $CLIENT_ROOT ?>/checklists/dynamicmap.php?interface=checklist" rel="noopener noreferrer">
-                                                                        Dynamic Checklists
+																	<?= $LANG['H_DYN_CHECKLISTS'] ?>
                                                                 </a>
                                                         </li>
                                                 </ul>
                                         </li>
                                         <li>
-                                                <a href="#">Images</a>
+                                                <a href="#"><?= $LANG['H_IMAGES'] ?></a>
                                                 <ul>
                                                         <li>
                                                                 <a href="<?= $CLIENT_ROOT ?>/imagelib/index.php">
-                                                                        Image Browser
+																	<?= $LANG['H_IMAGE_BROWSER'] ?>
                                                                 </a>
                                                         </li>
                                         		<li>
                                                 		<a href="<?= $CLIENT_ROOT ?>/imagelib/search.php">
-                                                        		Search Images
+															<?= $LANG['H_SEARCH_IMAGES'] ?>
                                                 		</a>
                                         		</li>
                                                 </ul>
                                         </li>
                                         <li>
-                                                <a href="#">Inventories</a>
+                                                <a href="#"><?= $LANG['H_INVENTORIES'] ?></a>
                                                 <ul>
                                                         <li>
                                                                 <a href="<?= $CLIENT_ROOT ?>/projects/index.php?pid=6">
-                                                                        Geographic Inventories
+																	<?= $LANG['H_GEO_INVENTORIES'] ?>
                                                                 </a>
                                                         </li>
                                                         <li>
                                                                 <a href="<?= $CLIENT_ROOT ?>/projects/index.php?pid=5">
-                                                                        Taxonomic Inventories
+                                                                	<?= $LANG['H_TAX_INVENTORIES'] ?>
                                                                 </a>
                                                         </li>
                                                 </ul>
                                         </li>
                                         <li>
-                                                <a href="#">Glossaries</a>
+                                                <a href="#"><?= $LANG['H_GLOSSARIES'] ?></a>
                                                 <ul>
                                                         <li>
                                                                 <a href="<?= $CLIENT_ROOT ?>/glossary/sources.php">
-                                                                        Contributors
+																	<?= $LANG['H_CONTRIBUTORS'] ?>
                                                                 </a>
                                                         </li>
                                                         <li>
                                                                 <a href="<?= $CLIENT_ROOT ?>/glossary/index.php">
-                                                                       Search Glossary
+																	<?= $LANG['H_SEARCH_GLOSSARY'] ?>
                                                                 </a>
                                                         </li>
                                                 </ul>
@@ -134,11 +134,11 @@ $collectionSearchPage = $SHOULD_USE_HARVESTPARAMS ? '/collections/index.php' : '
 						</a>
 					</li>
                                         <li>
-                                                <a href="#">Associated Projects</a>
+                                                <a href="#"><?= $LANG['H_ASSOC_PROJECTS'] ?></a>
                                                 <ul>
                                                         <li>
                                                                 <a href="https://invertebase.org/stri/" target="_blank">
-                                                                        STRI Marine Portal
+																	<?= $LANG['H_STRI'] ?>
                                                                 </a>
                                                         </li>
                                                         <li>
@@ -168,14 +168,14 @@ $collectionSearchPage = $SHOULD_USE_HARVESTPARAMS ? '/collections/index.php' : '
 							<?= $LANG['H_SITEMAP'] ?>
 						</a>
 					</li>
-					<!-- <li id="lang-select-li">
+					<li id="lang-select-li">
 						<label for="language-selection"><?= $LANG['H_SELECT_LANGUAGE'] ?>: </label>
 						<select oninput="setLanguage(this)" id="language-selection" name="language-selection">
 							<option value="en">English</option>
 							<option value="es" <?= ($LANG_TAG=='es'?'SELECTED':'') ?>>Español</option>
-							<option value="fr" <?= ($LANG_TAG=='fr'?'SELECTED':'') ?>>Français</option>
+							<!--<option value="fr" <?= ($LANG_TAG=='fr'?'SELECTED':'') ?>>Français</option>-->
 						</select>
-					</li> -->
+					</li>
 				</ul>
 			</nav>
 		</div>
