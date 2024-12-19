@@ -8,11 +8,11 @@ ul li {
   margin-bottom: 0.5em;
 } 
 
-.button-secondary > a {
+.button-secondary {
   color: #ffffff;
 }
 
-.button-tertiary > a {
+.button-tertiary {
   color: var(--bright-color);
 }
 
