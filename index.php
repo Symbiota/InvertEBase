@@ -86,7 +86,7 @@ header('Content-Type: text/html; charset=' . $CHARSET);
 				<div style="float:left;margin-left:10px;">
 					<?php 
 					$oodID = 1;
-					$ootdGameChecklist = 35;  
+					$ootdGameChecklist = 28;  
 					$includeSpecimens = true;
 					$ootdGameTitle = "Sponge of the Day ";  
 					$ootdGameType = "Sponge";  
@@ -111,9 +111,9 @@ header('Content-Type: text/html; charset=' . $CHARSET);
 				<div style="float:left;margin-left:10px;">
 					<?php 
 					$oodID = 2;
-					$ootdGameChecklist = 4;
-					$ootdGameTitle = "Fish of the Day ";  
-					$ootdGameType = "Fish";  
+					$ootdGameChecklist = 58;
+					$ootdGameTitle = "Amphipod of the Day ";  
+					$ootdGameType = "Amphipod";  
 					
 					include_once($SERVER_ROOT.'/classes/GamesManager.php');
 					$gameManager = new GamesManager();
