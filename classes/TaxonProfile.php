@@ -457,7 +457,13 @@ class TaxonProfile extends Manager {
 			foreach ($wikiSections as $section) {
 				if ($section["title"])
 					$retStr .= '<h3>' . htmlspecialchars($section['title'], ENT_QUOTES, 'UTF-8') . '</h3>';
-				$retStr .= '<p>' . nl2br($section['content']) . '</p>';
+				if (strip_tags($section['content']) == $section['content']) {
+					//if plain text convert newlines to <br>
+					$retStr .= '<p>' . nl2br(htmlspecialchars($section['content'], ENT_QUOTES, 'UTF-8')) . '</p>';
+				} else {
+					//display as is
+					$retStr .= '<p>' . $section['content'] . '</p>';
+				}
 			}
 			$retStr .= '</div>';
 		}
@@ -510,6 +516,12 @@ class TaxonProfile extends Manager {
 				break;
 			}
 
+			//skip sections with references/links
+			$skipSections = ['References', 'External links', 'See also', 'Further reading', 'Notes'];
+			if (in_array($section['line'], $skipSections)) {
+				continue;
+			}
+
 			$sectionContent = $this->getSectionContent($formattedName, $section['index']);
 			if ($sectionContent) {
 				$remainingChars = $maxLength - $totalCharCount;
@@ -558,15 +570,26 @@ class TaxonProfile extends Manager {
 
 	private function cleanWikipediaText($html) {
 
-		//leave only paragraph content
-		$cleanText = preg_replace('/^.*?<p>/s', '<p>', $html);
-		$cleanText = preg_replace('/<\/p>.*$/s', '</p>', $cleanText);
+		//remove section titles
+		$html = preg_replace('/<h[1-6][^>]*>.*?<\/h[1-6]>/s', '', $html);
 
 		//remove wiki references
-		$cleanText = preg_replace('/<sup.*?>.*?<\/sup>/s', '', $cleanText);
+		$cleanText = preg_replace('/<sup.*?>.*?<\/sup>/s', '', $html);
 
 		//remove all tags except <p>
 		$cleanText = strip_tags($cleanText, '<p><br>');
+
+		//remove wiki errors and wiki css and js code
+		$cleanText = preg_replace('/Cite error:.*?<\/p>/s', '', $cleanText);
+		$cleanText = preg_replace('/\.mw-parser-output[^\n]*/', '', $cleanText);
+		$cleanText = preg_replace('/<style.*?<\/style>/s', '', $cleanText);
+		$cleanText = preg_replace('/<script.*?<\/script>/s', '', $cleanText);
+
+		//remove reference lists
+		$cleanText = preg_replace('/<ol class="references".*?<\/ol>/s', '', $cleanText);
+		$cleanText = preg_replace('/<li id="cite_note-.*?<\/li>/s', '', $cleanText);
+		$cleanText = preg_replace('/<span class="reference-text">.*?<\/span>/s', '', $cleanText);
+		$cleanText = preg_replace('/^\s*\^.*$/m', '', $cleanText);
 
 		//remove the square brackets content
 		$cleanText = preg_replace('/\[[^\[\]]*\]/', '', $cleanText);
