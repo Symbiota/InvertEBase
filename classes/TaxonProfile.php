@@ -425,14 +425,18 @@ class TaxonProfile extends Manager {
 		if((isset($CALENDAR_TRAIT_PLOTS) && $CALENDAR_TRAIT_PLOTS > 0) && $this->rankId > 180) {
 			$retStr .= '<li><a href="plottab.php?tid=' . htmlspecialchars($this->tid, ENT_COMPAT | ENT_HTML401 | ENT_SUBSTITUTE) . '">' . htmlspecialchars(($LANG['CALENDAR_TRAIT_PLOT']?$LANG['CALENDAR_TRAIT_PLOT']:'Traits Plots'), ENT_COMPAT | ENT_HTML401 | ENT_SUBSTITUTE) . '</a></li>';
 		}
-		$retStr .= '<li><a href="resourcetab.php?tid=' . htmlspecialchars($this->tid, ENT_COMPAT | ENT_HTML401 | ENT_SUBSTITUTE) . '">' . htmlspecialchars(($LANG['RESOURCES']?$LANG['RESOURCES']:'Resources'), ENT_COMPAT | ENT_HTML401 | ENT_SUBSTITUTE) . '</a></li>';
 
 		//Fetch Wikipedia sections
-		$wikiSections = $this->getWikipediaDescription($this->sciName);
-		if ($wikiSections) {
-			$retStr .= '<li><a href="#wikitab">Wikipedia</a></li>';
+		if (!empty($GLOBALS['WIKIPEDIA_TAXON_TAB'])){
+			$wikiSections = $this->getWikipediaDescription($this->sciName);
+			if ($wikiSections) {
+				$retStr .= '<li><a href="#wikitab">Wikipedia</a></li>';
+			}
 		}
+
+		$retStr .= '<li><a href="resourcetab.php?tid=' . htmlspecialchars($this->tid, ENT_COMPAT | ENT_HTML401 | ENT_SUBSTITUTE) . '">' . htmlspecialchars(($LANG['RESOURCES']?$LANG['RESOURCES']:'Resources'), ENT_COMPAT | ENT_HTML401 | ENT_SUBSTITUTE) . '</a></li>';
 		$retStr .= '</ul>';
+
 		foreach($descArr as $dArr){
 			foreach($dArr as $id => $vArr){
 				$retStr .= '<div id="tab'.$id.'" class="sptab">';
@@ -452,7 +456,7 @@ class TaxonProfile extends Manager {
 			}
 		}
 
-		if ($wikiSections) {
+		if (!empty($wikiSections)) {
 			$retStr .= '<div id="wikitab" class="sptab">';
 			foreach ($wikiSections as $section) {
 				if ($section["title"])
@@ -474,7 +478,7 @@ class TaxonProfile extends Manager {
 
 	private function getWikipediaDescription($sciName) {
 		$formattedName = urlencode($sciName);
-		$url = "https://en.wikipedia.org/w/api.php?action=parse&page={$formattedName}&format=json&prop=sections";
+		$url = "https://en.wikipedia.org/w/api.php?action=parse&page={$formattedName}&redirects=1&format=json&prop=sections";
 		$wikiUrl = "https://en.wikipedia.org/wiki/" . urlencode(str_replace(' ', '_', $sciName));
 
 		$response = @file_get_contents($url);
@@ -494,7 +498,7 @@ class TaxonProfile extends Manager {
 		//total char limit
 		$maxLength = 2000;
 
-		$summaryUrl = "https://en.wikipedia.org/w/api.php?action=query&format=json&prop=extracts&titles={$formattedName}&exintro=true&explaintext=true";
+		$summaryUrl = "https://en.wikipedia.org/w/api.php?action=query&redirects=1&format=json&prop=extracts&titles={$formattedName}&exintro=true&explaintext=true";
 		$summaryResponse = @file_get_contents($summaryUrl);
 		if (!$summaryResponse) {
 			error_log("Wikipedia summary request failed: " . $summaryUrl);
@@ -551,7 +555,7 @@ class TaxonProfile extends Manager {
 	}
 
 	private function getSectionContent($page, $section) {
-		$url = "https://en.wikipedia.org/w/api.php?action=parse&page={$page}&format=json&prop=text&section={$section}";
+		$url = "https://en.wikipedia.org/w/api.php?action=parse&page={$page}&redirects=1&format=json&prop=text&section={$section}";
 		$response = @file_get_contents($url);
 		if (!$response) {
 			error_log("Wikipedia section request failed: " . $url);
