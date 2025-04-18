@@ -98,7 +98,7 @@ header('Content-Type: text/html; charset=' . $CHARSET);
 				</p>
 			</div>
 			<div>
-				<div style="float:left;margin-left:10px;">
+				<div style="float:left;">
 					<?php
 					$oodID = 1;
 					$ootdGameChecklist = 28;
@@ -123,7 +123,7 @@ header('Content-Type: text/html; charset=' . $CHARSET);
 						</a>
 					</div>
 				</div>
-				<div style="float:left;margin-left:10px;">
+				<div style="float:left;">
 					<?php
 					$oodID = 2;
 					$ootdGameChecklist = 58;
