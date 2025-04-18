@@ -454,7 +454,7 @@ class TaxonProfile extends Manager {
 					}
 					$retStr .= '</div>';
 				}
-				$retStr .= '<div style="clear:both;">' . implode(' ', array_map('htmlspecialchars', $vArr['desc'])) . '</div>';
+				$retStr .= '<div style="clear:both;">' . implode(' ', $vArr['desc']) . '</div>';
 				$retStr .= '</div>';
 			}
 		}
