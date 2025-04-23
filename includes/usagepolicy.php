@@ -1,6 +1,6 @@
 <?php
 include_once('../config/symbini.php');
-include_once ($SERVER_ROOT.'/classes/UtilityFunctions.php');
+include_once ($SERVER_ROOT . '/classes/utilities/GeneralUtil.php');
 header("Content-Type: text/html; charset=" . $CHARSET);
 $serverHost = UtilityFunctions::getDomain();
 ?>
