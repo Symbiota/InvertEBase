@@ -9,6 +9,17 @@
  e.g. override: $LANG['H_COLLECTIONS'] = 'Search Lichen Collections';
 */
 
-
+$LANG['H_IMAGE_BROWSER'] = 'Buscador de Imágenes';
+$LANG['H_CUSTOM_SEARCH'] = 'Búsqueda Personalizada';
+$LANG['H_ALGAE_PANAMA'] = 'Algas de Panamá';
+$LANG['H_FIDDLER_CRABS'] = 'Cangrejos Violinistas (Uca) - Nuevo Mundo';
+$LANG['H_MARINE_INVERTS'] = 'Invertebrados Marinos';
+$LANG['H_INTERACTIVE_TOOLS'] = 'Herramientas Interactivas';
+$LANG['H_DYNAMIC_STARFISH_LIST'] = 'Lista Dinámica de Estrellas de Mar';
+$LANG['H_DYNAMIC_FISH_LIST'] = 'Lista Dinámica de Peces';
+$LANG['H_GLOSSARY'] = 'Glosario';
+$LANG['H_CONTRIBUTORS'] = 'Colaboradores';
+$LANG['H_SEARCH_GLOSSARY'] = 'Buscar en Glosario';
+$LANG['H_TAXONOMY'] = 'Taxonomía';
 
 ?>
