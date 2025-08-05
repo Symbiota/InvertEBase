@@ -2,4 +2,26 @@
 Place your CSS customizations here.
 This stylesheet is defined last and will override all previously loaded sheets. You may reference variables defined in variables.css 
  */
- 
+
+.button-secondary > a {
+  color: white;
+}
+
+.welcome-text {
+  display: flex;
+  align-items: center;
+  margin-left: 1rem;
+  font-weight: bold;
+  text-shadow: 0px 0px 7px black;
+}
+
+.button-tertiary {
+  background-color: #ffffff9b;
+  font-weight: bold;
+  border: 3px solid var(--bright-color);
+  padding: 0.5rem 0.9rem;
+}
+
+.button-tertiary > a {
+  color: var(--bright-color);
+}
