@@ -32,21 +32,7 @@ $serverHost = GeneralUtil::getDomain();
 		<p>Use one of the following formats to cite data retrieved from the <?php echo $DEFAULT_TITLE; ?> network:</p>
 		<h3>General Citation</h3>
 		<blockquote>
-			<?php
-			if (file_exists($SERVER_ROOT . '/includes/citationportal.php')) {
-				include($SERVER_ROOT . '/includes/citationportal.php');
-			}
-			else {
-				echo 'Biodiversity occurrence data published by: ';
-				if ($DEFAULT_TITLE) {
-					echo $DEFAULT_TITLE;
-				}
-				else {
-					echo 'Invert-E-Base';
-				};
-				echo ', (accessed through the ' . $serverHost . $CLIENT_ROOT . '/, ' . date('Y-m-d') . ').';
-			};
-			?>
+			<?= $DEFAULT_TITLE ?>, accessed via <?= $serverHost . $CLIENT_ROOT ?>/, <?= date('Y-m-d') ?>.
 		</blockquote>
 
 		<h3>Usage of occurrence data from specific institutions</h3>
