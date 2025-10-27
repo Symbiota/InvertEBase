@@ -1,20 +1,21 @@
 <?php
 include_once('../config/symbini.php');
-include_once ($SERVER_ROOT.'/classes/UtilityFunctions.php');
+if($LANG_TAG != 'en' && file_exists($SERVER_ROOT.'/content/lang/templates/usagepolicy.' . $LANG_TAG . '.php'))
+	include_once($SERVER_ROOT.'/content/lang/templates/usagepolicy.' . $LANG_TAG . '.php');
+else include_once($SERVER_ROOT . '/content/lang/templates/usagepolicy.en.php');
+include_once ($SERVER_ROOT . '/classes/utilities/GeneralUtil.php');
+
 header("Content-Type: text/html; charset=" . $CHARSET);
-$serverHost = UtilityFunctions::getDomain();
+$serverHost = GeneralUtil::getDomain();
 ?>
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
 	<title><?php echo $DEFAULT_TITLE; ?> Data Usage Guidelines</title>
 	<?php
-
 	include_once($SERVER_ROOT . '/includes/head.php');
 	?>
 </head>
-
 <body>
 	<?php
 	$displayLeftMenu = true;
@@ -41,14 +42,14 @@ $serverHost = UtilityFunctions::getDomain();
 					echo $DEFAULT_TITLE;
 				}
 				else {
-					echo 'Name of people or institutional reponsible for maintaining the portal';
+					echo 'Name of people or institutional responsible for maintaining the portal';
 				};
 				echo ' (accessed through the ';
 				if ($DEFAULT_TITLE) {
 					echo $DEFAULT_TITLE;
 				}
 				else {
-					echo 'Name of people or institutional reponsible for maintaining the portal';
+					echo 'Name of people or institutional responsible for maintaining the portal';
 				};
 				echo ' Portal, ' . $serverHost . $CLIENT_ROOT . ', ' . date('Y-m-d') . ').';
 			};
@@ -61,7 +62,7 @@ $serverHost = UtilityFunctions::getDomain();
 		<blockquote>
 			<?php
 			$collData['collectionname'] = 'Name of Institution or Collection';
-			$collData['dwcaurl'] = $serverhost . $CLIENT_ROOT . '/portal/content/dwca/NIC_DwC-A.zip';
+			$collData['dwcaurl'] = $serverHost . $CLIENT_ROOT . '/portal/content/dwca/NIC_DwC-A.zip';
 			if (file_exists($SERVER_ROOT . '/includes/citationcollection.php')) {
 				include($SERVER_ROOT . '/includes/citationcollection.php');
 			} else {
@@ -77,7 +78,7 @@ $serverHost = UtilityFunctions::getDomain();
 					echo $DEFAULT_TITLE;
 				}
 				else {
-					echo 'Name of people or institutional reponsible for maintaining the portal';
+					echo 'Name of people or institutional responsible for maintaining the portal';
 				};
 				echo '. Glossary. ' . $serverHost . $CLIENT_ROOT . 'glossary/index.php. Accessed: ' . date('Y-m-d') . '.';
 			?>
@@ -132,5 +133,4 @@ $serverHost = UtilityFunctions::getDomain();
 	include($SERVER_ROOT . '/includes/footer.php');
 	?>
 </body>
-
 </html>
