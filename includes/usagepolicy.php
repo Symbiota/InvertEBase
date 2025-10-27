@@ -42,16 +42,9 @@ $serverHost = GeneralUtil::getDomain();
 					echo $DEFAULT_TITLE;
 				}
 				else {
-					echo 'Name of people or institutional responsible for maintaining the portal';
+					echo 'Invert-E-Base';
 				};
-				echo ' (accessed through the ';
-				if ($DEFAULT_TITLE) {
-					echo $DEFAULT_TITLE;
-				}
-				else {
-					echo 'Name of people or institutional responsible for maintaining the portal';
-				};
-				echo ' Portal, ' . $serverHost . $CLIENT_ROOT . ', ' . date('Y-m-d') . ').';
+				echo ', (accessed through the ' . $serverHost . $CLIENT_ROOT . '/, ' . date('Y-m-d') . ').';
 			};
 			?>
 		</blockquote>
@@ -60,27 +53,13 @@ $serverHost = GeneralUtil::getDomain();
 		<p>Access each collection profile page to find the available citation formats.</p>
 		<h4>Example</h4>
 		<blockquote>
-			<?php
-			$collData['collectionname'] = 'Name of Institution or Collection';
-			$collData['dwcaurl'] = $serverHost . $CLIENT_ROOT . '/portal/content/dwca/NIC_DwC-A.zip';
-			if (file_exists($SERVER_ROOT . '/includes/citationcollection.php')) {
-				include($SERVER_ROOT . '/includes/citationcollection.php');
-			} else {
-				echo 'Name of Institution or Collection. Occurrence dataset ' . 'http://gh.local/Symbiota/portal/content/dwca/' . 'accessed via the' . 'Fresh Symbiota Install' . 'Portal, ' . 'http://gh.local/Symbiota' . ', 2022-07-25.';
-			}
-			?>
+			[Name of Institution or Collection]. Occurrence dataset <?= $serverHost . $CLIENT_ROOT  ?>/content/dwca/[file-download-name] accessed via <?= $DEFAULT_TITLE?>, <?= $serverHost . $CLIENT_ROOT ?>/, <?= date('Y-m-d') ?>.
 		</blockquote>
 		<h3>Glossary</h3>
 		<p>Please cite this portal's glossary as:</p>
 		<blockquote>
 			<?php
-				if ($DEFAULT_TITLE) {
-					echo $DEFAULT_TITLE;
-				}
-				else {
-					echo 'Name of people or institutional responsible for maintaining the portal';
-				};
-				echo '. Glossary. ' . $serverHost . $CLIENT_ROOT . 'glossary/index.php. Accessed: ' . date('Y-m-d') . '.';
+			echo 'Invert-E-Base TaxaGloss - A Glossary and Translation Tool for Biodiversity Studies. Accessed via ' . $serverHost . $CLIENT_ROOT . '/glossary/index.php, ' . date('Y-m-d') . '.';
 			?>
 		</blockquote>
 
