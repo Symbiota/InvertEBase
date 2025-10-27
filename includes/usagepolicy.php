@@ -32,7 +32,7 @@ $serverHost = GeneralUtil::getDomain();
 		<p>Use one of the following formats to cite data retrieved from the <?php echo $DEFAULT_TITLE; ?> network:</p>
 		<h3>General Citation</h3>
 		<blockquote>
-			<?= $DEFAULT_TITLE ?>, accessed via <?= $serverHost . $CLIENT_ROOT ?>/, <?= date('Y-m-d') ?>.
+			InvertEBase. (<?= date('Y') ?>). STRI Marine Life of Panama Data Portal. Retrieved <?= date('Y-m-d') ?>, from <?= $serverHost . $CLIENT_ROOT ?>/
 		</blockquote>
 
 		<h3>Usage of occurrence data from specific institutions</h3>
@@ -44,9 +44,7 @@ $serverHost = GeneralUtil::getDomain();
 		<h3>Glossary</h3>
 		<p>Please cite this portal's glossary as:</p>
 		<blockquote>
-			<?php
-			echo 'Invert-E-Base TaxaGloss - A Glossary and Translation Tool for Biodiversity Studies. Accessed via ' . $serverHost . $CLIENT_ROOT . '/glossary/index.php, ' . date('Y-m-d') . '.';
-			?>
+			InvertEBase. (<?= date('Y') ?>). TaxaGloss - A Glossary and Translation Tool for Biodiversity Studies. Retrieved <?= date('Y-m-d') ?>, from <?= $serverHost . $CLIENT_ROOT ?>/glossary/index.php
 		</blockquote>
 
 		<h2>Occurrence Record Use Policy</h2>
