@@ -17,7 +17,7 @@
                 </a>
 	</div>
 		<p>
-		This project made possible by U.S. National Science Foundation Awards <a href="https://www.nsf.gov/awardsearch/show-award/?AWD_ID=1402667" target="_blank">1402667</a>,<a href="https://www.nsf.gov/awardsearch/show-award/?AWD_ID=2001601" target="_blank">2001601</a>, and <a href="https://www.nsf.gov/awardsearch/show-award/?AWD_ID=2001510" target="_blank">2001510</a> and other projects.
+		This project made possible by U.S. National Science Foundation Awards <a href="https://www.nsf.gov/awardsearch/show-award/?AWD_ID=1402667" target="_blank">1402667</a>, <a href="https://www.nsf.gov/awardsearch/show-award/?AWD_ID=2001601" target="_blank">2001601</a>, and <a href="https://www.nsf.gov/awardsearch/show-award/?AWD_ID=2001510" target="_blank">2001510</a> and other projects.
 	</p>
 	<p>
 		<?= $LANG['F_POWERED_BY'] ?> <a href="https://symbiota.org/" target="_blank">Symbiota</a>.
