@@ -26,6 +26,7 @@ class TaxonProfile extends Manager {
 	private $imageArr;
 	private $sppArray;
 	private $linkArr = false;
+	private $header;
 
 	private $displayLocality = 1;
 
@@ -384,11 +385,13 @@ class TaxonProfile extends Manager {
 						$indexKey = 1;
 					}
 					if(!isset($retArr[$indexKey]) || !array_key_exists($rowArr['tdbid'],$retArr[$indexKey])){
-						$retArr[$indexKey][$rowArr['tdbid']]['caption'] = $rowArr['caption'];
-						$retArr[$indexKey][$rowArr['tdbid']]['source'] = $rowArr['source'];
-						$retArr[$indexKey][$rowArr['tdbid']]['url'] = $rowArr['sourceurl'];
+						$retArr[$indexKey][$rowArr['tdbid']]['caption'] = htmlspecialchars($rowArr['caption'], ENT_COMPAT | ENT_HTML401 | ENT_SUBSTITUTE);
+						$retArr[$indexKey][$rowArr['tdbid']]['source'] = htmlspecialchars($rowArr['source']??'', ENT_COMPAT | ENT_HTML401 | ENT_SUBSTITUTE);
+						$retArr[$indexKey][$rowArr['tdbid']]['url'] = htmlspecialchars($rowArr['sourceurl']??'', ENT_COMPAT | ENT_HTML401 | ENT_SUBSTITUTE);
 					}
-					$retArr[$indexKey][$rowArr['tdbid']]['desc'][$rowArr['tdsid']] = ($rowArr['displayheader'] && $rowArr['heading']?'<b>'.$rowArr['heading'].'</b>: ':'').$rowArr['statement'];
+					$stmtStr = $rowArr['statement'];
+					if($rowArr['displayheader'] && $rowArr['heading']) $stmtStr = '<b>' . htmlspecialchars($rowArr['heading'], ENT_COMPAT | ENT_HTML401 | ENT_SUBSTITUTE) . '</b>: ' . $stmtStr;
+					$retArr[$indexKey][$rowArr['tdbid']]['desc'][$rowArr['tdsid']] = $stmtStr;
 					$usedCaptionArr[$rowArr['caption']] = $rowArr['tdbid'];
 				}
 			}
@@ -435,7 +438,7 @@ class TaxonProfile extends Manager {
 			}
 		}
 		if((isset($CALENDAR_TRAIT_PLOTS) && $CALENDAR_TRAIT_PLOTS > 0) && $this->rankId > 180) {
-			$retStr .= '<li><a href="plottab.php?tid=' . $this->tid . '">' . ($LANG['CALENDAR_TRAIT_PLOT']?$LANG['CALENDAR_TRAIT_PLOT']:'Traits Plots') . '</a></li>';
+			$retStr .= '<li><a href="plottab.php?tid=' . $this->tid . '">' . $LANG['CALENDAR_TRAIT_PLOT'] . '</a></li>';
 		}
 
 		//Fetch Wikipedia sections
@@ -446,7 +449,7 @@ class TaxonProfile extends Manager {
 			}
 		}
 
-		$retStr .= '<li><a href="resourcetab.php?tid=' . htmlspecialchars($this->tid, ENT_COMPAT | ENT_HTML401 | ENT_SUBSTITUTE) . '">' . htmlspecialchars(($LANG['RESOURCES']?$LANG['RESOURCES']:'Resources'), ENT_COMPAT | ENT_HTML401 | ENT_SUBSTITUTE) . '</a></li>';
+		$retStr .= '<li><a href="resourcetab.php?tid=' . $this->tid . '">' . $LANG['RESOURCES'] . '</a></li>';
 		$retStr .= '</ul>';
 
 		foreach($descArr as $dArr){
@@ -455,9 +458,9 @@ class TaxonProfile extends Manager {
 				if (!empty($vArr['source'])){
 					$retStr .= '<div id="descsource" style="float:right;">';
 					if (!empty($vArr['url'])){
-						$retStr .= '<a href="' . htmlspecialchars($vArr['url'], ENT_QUOTES, 'UTF-8') . '" target="_blank">';
+						$retStr .= '<a href="' . $vArr['url'] . '" target="_blank">';
 					}
-					$retStr .= htmlspecialchars($vArr['source'], ENT_QUOTES, 'UTF-8');
+					$retStr .= $vArr['source'];
 					if (!empty($vArr['url'])){
 						$retStr .= '</a>';
 					}
@@ -493,7 +496,13 @@ class TaxonProfile extends Manager {
 		$url = "https://en.wikipedia.org/w/api.php?action=parse&page={$formattedName}&redirects=1&format=json&prop=sections";
 		$wikiUrl = "https://en.wikipedia.org/wiki/" . urlencode(str_replace(' ', '_', $sciName));
 
-		$response = @file_get_contents($url);
+		$options = [
+			"http" => [
+				"header" => "User-Agent: Symbiota (" . $GLOBALS['SERVER_HOST'] . $GLOBALS['CLIENT_ROOT'] . ")\r\n"
+			]
+		];
+		$this->header = stream_context_create($options);
+		$response = @file_get_contents($url, false, $this->header);
 		if (!$response) {
 			error_log("Wikipedia API request failed: " . $url);
 			return null;
@@ -511,7 +520,7 @@ class TaxonProfile extends Manager {
 		$maxLength = 2000;
 
 		$summaryUrl = "https://en.wikipedia.org/w/api.php?action=query&redirects=1&format=json&prop=extracts&titles={$formattedName}&exintro=true&explaintext=true";
-		$summaryResponse = @file_get_contents($summaryUrl);
+		$summaryResponse = @file_get_contents($summaryUrl, false, $this->header);
 		if (!$summaryResponse) {
 			error_log("Wikipedia summary request failed: " . $summaryUrl);
 			return null;
@@ -568,7 +577,7 @@ class TaxonProfile extends Manager {
 
 	private function getSectionContent($page, $section) {
 		$url = "https://en.wikipedia.org/w/api.php?action=parse&page={$page}&redirects=1&format=json&prop=text&section={$section}";
-		$response = @file_get_contents($url);
+		$response = @file_get_contents($url, false, $this->header);
 		if (!$response) {
 			error_log("Wikipedia section request failed: " . $url);
 			return '';
@@ -1037,7 +1046,9 @@ class TaxonProfile extends Manager {
 		$rs = $this->conn->query($sql);
 		while($r = $rs->fetch_object()){
 			$this->langArr[strtolower($r->langname)] = $r->langid;
-			$this->langArr[strtolower($r->iso639_1)] = $r->langid;
+			if (!empty($r->iso639_1)) {
+				$this->langArr[strtolower($r->iso639_1)] = $r->langid;
+			}
 		}
 		$rs->free();
 	}
