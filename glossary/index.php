@@ -85,7 +85,6 @@ $taxonName = ($tid?$taxaArr[$tid]:'');
 			f.searchtaxa.value = searchForm.searchtaxa.value;
 			f.searchterm.value = searchForm.searchterm.value;
 			if(searchForm.deepsearch.checked) f.deepsearch.value = 1;
-
 			var downloadtype = f.exporttype.value;
 			if(downloadtype == 'translation'){
 				var numTranslations = 0;
